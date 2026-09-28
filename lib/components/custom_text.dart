@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
-  // Variabel yang diperlukan
   final String myText;
   final double mySize;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'calculator_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,17 +18,13 @@ class _LoginPageState extends State<LoginPage> {
     String password = passwordController.text;
 
     if (username == "admin" && password == "admin") {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const CalculatorPage(),
-        ),
-      );
+      Get.to(() => CalculatorPage());
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Username atau Password salah"),
-        ),
+      Get.snackbar(
+        "Login Gagal",
+        "Username atau Password salah",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.shade100,
       );
     }
   }
@@ -53,9 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 30),
-
             const Text(
               "Username",
               style: TextStyle(
@@ -63,9 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 10),
-
             TextField(
               controller: usernameController,
               decoration: const InputDecoration(
@@ -73,9 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: "Masukkan username",
               ),
             ),
-
             const SizedBox(height: 20),
-
             const Text(
               "Password",
               style: TextStyle(
@@ -83,9 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 10),
-
             TextField(
               controller: passwordController,
               obscureText: true,
@@ -94,9 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: "Masukkan password",
               ),
             ),
-
             const SizedBox(height: 30),
-
             SizedBox(
               width: double.infinity,
               height: 50,

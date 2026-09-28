@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  // Variabel yang diperlukan
   final String myText;
   final VoidCallback myOnPressed;
 
@@ -13,12 +12,16 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: myOnPressed,
-      child: Text(
-        myText,
-        style: const TextStyle(
-          fontSize: 18,
+    return SizedBox(
+      width: 65,
+      height: 55,
+      child: ElevatedButton(
+        onPressed: myOnPressed,
+        child: Text(
+          myText,
+          style: const TextStyle(
+            fontSize: 22,
+          ),
         ),
       ),
     );

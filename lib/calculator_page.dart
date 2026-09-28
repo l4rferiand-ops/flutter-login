@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'components/controllers/kalkulator_controller.dart';
+import 'components/custom_textfield.dart';
+import 'components/custom_button.dart';
+import 'components/custom_text.dart';
 
 class CalculatorPage extends StatelessWidget {
-  const CalculatorPage({super.key});
+  CalculatorPage({super.key});
+
+  final KalkulatorController controller = Get.put(KalkulatorController());
+  final TextEditingController angka1Controller = TextEditingController();
+  final TextEditingController angka2Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,78 +25,77 @@ class CalculatorPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Masukkan Angka Pertama",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            const CustomText(
+              myText: "Masukkan Angka Pertama",
+              mySize: 18,
             ),
-
             const SizedBox(height: 10),
-
-            TextField(
-              keyboardType: TextInputType.number,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Masukkan angka pertama",
-              ),
+            CustomTextfield(
+              myHint: "Masukkan angka pertama",
+              txtController: angka1Controller,
             ),
-
             const SizedBox(height: 25),
-
-            const Text(
-              "Masukkan Angka Kedua",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            const CustomText(
+              myText: "Masukkan Angka Kedua",
+              mySize: 18,
             ),
-
             const SizedBox(height: 10),
-
-            TextField(
-              keyboardType: TextInputType.number,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-              ],
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Masukkan angka kedua",
-              ),
+            CustomTextfield(
+              myHint: "Masukkan angka kedua",
+              txtController: angka2Controller,
             ),
-
             const SizedBox(height: 30),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                tombol("/"),
-                tombol("*"),
-                tombol("-"),
-                tombol("+"),
+                CustomButton(
+                  myText: "/",
+                  myOnPressed: () {
+                    controller.bagi(
+                      angka1Controller.text,
+                      angka2Controller.text,
+                    );
+                  },
+                ),
+                CustomButton(
+                  myText: "*",
+                  myOnPressed: () {
+                    controller.kali(
+                      angka1Controller.text,
+                      angka2Controller.text,
+                    );
+                  },
+                ),
+                CustomButton(
+                  myText: "-",
+                  myOnPressed: () {
+                    controller.kurang(
+                      angka1Controller.text,
+                      angka2Controller.text,
+                    );
+                  },
+                ),
+                CustomButton(
+                  myText: "+",
+                  myOnPressed: () {
+                    controller.tambah(
+                      angka1Controller.text,
+                      angka2Controller.text,
+                    );
+                  },
+                ),
               ],
             ),
+            const SizedBox(height: 30),
+            Center(
+              child: Obx(
+                () => CustomText(
+                  myText: "Hasil: ${controller.hasilHitung.value}",
+                  mySize: 22,
+                ),
+              ),
+            ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget tombol(String text) {
-    return SizedBox(
-      width: 65,
-      height: 55,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          text,
-          style: const TextStyle(
-            fontSize: 22,
-          ),
         ),
       ),
     );
