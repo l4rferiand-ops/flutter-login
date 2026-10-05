@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'login_page.dart';
+import 'package:kalkulator/routes.dart';
 
 void main() {
-  runApp(const MyCalculator());
+  runApp(const MyApp());
 }
 
-class MyCalculator extends StatelessWidget {
-  const MyCalculator({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+    return GetMaterialApp(
+      title: "Belajar Flutter GetX",
+      initialRoute: Routes.registration,
+      getPages: Routes.myPages,
     );
   }
 }

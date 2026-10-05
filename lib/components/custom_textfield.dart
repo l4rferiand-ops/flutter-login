@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class CustomTextfield extends StatelessWidget {
   final String myHint;
@@ -13,16 +12,24 @@ class CustomTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const Color primaryTextNavy = Color(0xFF0F172A);
+    const Color accentBlue = Color(0xFF2563EB);
+
     return TextField(
       controller: txtController,
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-      inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
-      ],
+      style: const TextStyle(color: primaryTextNavy),
       decoration: InputDecoration(
-        hintText: myHint,
-        border: OutlineInputBorder(
+        labelText: myHint,
+        labelStyle: const TextStyle(color: primaryTextNavy),
+        filled: true,
+        fillColor: Colors.white,
+        enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: primaryTextNavy.withOpacity(0.3)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(color: accentBlue, width: 2),
         ),
       ),
     );
