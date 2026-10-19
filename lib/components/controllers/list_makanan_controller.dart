@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:kalkulator/models/makanan_model.dart';
 
 class ListMakananController extends GetxController {
-  final List<MakananModel> dataMakanan = [
+  final dataMakanan = <MakananModel>[
     MakananModel(
       nama: 'Nasi Goreng',
       deskripsi:
@@ -43,5 +43,5 @@ class ListMakananController extends GetxController {
       review:
           'Rasanya gurih dan cocok untuk makan siang.',
     ),
-  ];
+  ].obs;
 }

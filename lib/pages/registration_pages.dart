@@ -12,17 +12,14 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
-  // Text Controllers
   late TextEditingController txtUsername;
   late TextEditingController txtNamaLengkap;
   late TextEditingController txtEmail;
   late TextEditingController txtNomorWa;
 
-  // State Pilihan Dropdown
   String? selectedReligion;
   String? selectedGender;
 
-  // List Agama
   final List<String> religionList = [
     'Islam',
     'Kristen',
@@ -33,18 +30,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
     'Lainnya'
   ];
 
-  // List Jenis Kelamin
   final List<String> genderList = [
     'Laki-laki',
     'Perempuan',
     'Taco',
   ];
 
-  // Definition Color Palette (60 - 30 - 10 Rule)
-  static const Color backgroundColor = Color(0xFFF8FAFC); // 60%
-  static const Color primaryTextNavy = Color(0xFF0F172A); // 30%
-  static const Color inputBgColor = Color(0xFFFFFFFF);     // 60% (Clean Container)
-  static const Color accentBlue = Color(0xFF2563EB);      // 10% CTA
+  static const Color backgroundColor = Color(0xFFF8FAFC); 
+  static const Color primaryTextNavy = Color(0xFF0F172A); 
+  static const Color inputBgColor = Color(0xFFFFFFFF);     
+  static const Color accentBlue = Color(0xFF2563EB);      
 
   @override
   void initState() {
@@ -64,7 +59,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
     super.dispose();
   }
 
-  // Helper untuk Styling Input Decorator (Textfield & Dropdown)
   InputDecoration _buildInputDecoration(String labelText, IconData icon) {
     return InputDecoration(
       labelText: labelText,
@@ -116,21 +110,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             const SizedBox(height: 20),
 
-            // 1. Username
             CustomTextfield(
               myHint: "Input Username",
               txtController: txtUsername,
             ),
             const SizedBox(height: 16),
 
-            // 2. Nama Lengkap
             CustomTextfield(
               myHint: "Input Nama Lengkap",
               txtController: txtNamaLengkap,
             ),
             const SizedBox(height: 16),
 
-            // 3. Email
             TextField(
               controller: txtEmail,
               keyboardType: TextInputType.emailAddress,
@@ -139,7 +130,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             const SizedBox(height: 16),
 
-            // 4. Religion (Dropdown Kolom)
             DropdownButtonFormField<String>(
               dropdownColor: inputBgColor,
               style: const TextStyle(color: primaryTextNavy, fontSize: 16),
@@ -159,7 +149,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             const SizedBox(height: 16),
 
-            // 5. Jenis Kelamin (Dropdown Kolom)
             DropdownButtonFormField<String>(
               dropdownColor: inputBgColor,
               style: const TextStyle(color: primaryTextNavy, fontSize: 16),
@@ -179,7 +168,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             const SizedBox(height: 16),
 
-            // 6. Nomor WA (Number Only)
             TextField(
               controller: txtNomorWa,
               keyboardType: TextInputType.number,
@@ -189,7 +177,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             const SizedBox(height: 28),
 
-            // Button Send (CTA 10%)
             SizedBox(
               width: double.infinity,
               height: 52,
